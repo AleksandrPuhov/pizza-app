@@ -1,14 +1,20 @@
-import Wrapper from './hoc/Wrapper';
+import ReactAux from './hoc/ReactAux/ReactAux';
+
+import Header from './containers/Header/Header';
+import Pizza from './containers/Pizza/Pizza';
+import Footer from './containers/Footer/Footer';
 
 import './App.scss';
 
 const App = () => {
     return (
-        <Wrapper>
-            <div className='App'>xvzxvzxvz</div>
-            <nav> const xcv</nav>
-            <h1> const xcv</h1>
-        </Wrapper>
+        <ReactAux>
+            <Header />
+
+            <Pizza />
+
+            <Footer />
+        </ReactAux>
     );
 }
 

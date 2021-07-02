@@ -1,0 +1,23 @@
+.Header {
+    //height: 50px;
+    padding: 10px 0 0 0;
+    &-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-info {
+            height: 120px;
+            display: flex;
+            align-items: center;
+
+            &__text {
+            }
+        }
+    }
+    &-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

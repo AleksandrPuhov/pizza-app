@@ -3,7 +3,8 @@
 @import './styles/common';
 @import './styles/fonts';
 
+@import './containers/Wrapper/Wrapper.scss';
+@import './containers/Header/Header.scss';
+@import './containers/Pizza/Pizza.scss';
 
-.App {
-    background-color: red;
-}
+@import './components/Logo/Logo.scss';
