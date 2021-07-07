@@ -1,0 +1,44 @@
+.Person {
+    $heightBase: 55px;
+
+    display: flex;
+    align-items: center;
+
+    &-bell {
+        width: $heightBase;
+        height: $heightBase;
+        background-color: $iconBG;
+        padding: 13px;
+        border-radius: 50%;
+    }
+    &-avatar {
+        width: $heightBase;
+        height: $heightBase;
+        background-color: $avatarBG;
+        padding: 10px;
+        border-radius: 50%;
+        margin-left: 20px;
+
+        &__img {
+            height: 100%;
+        }
+    }
+    &-info {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        &__name {
+            font-weight: 600;
+        }
+        &__status {
+            font-size: 14px;
+            font-weight: 300;
+            color: $textInfoColor;
+            margin-top: 5px;
+        }
+    }
+    &-arrowDown {
+        width: 15px;
+        margin-left: 20px;
+    }
+}
