@@ -1,6 +1,8 @@
 import Wrapper from '../Wrapper/Wrapper';
 import Logo from '../../components/Logo/Logo';
 import Person from '../../components/Person/Person';
+import Nav from '../../components/Nav/Nav';
+import Cart from '../../components/Cart/Cart';
 
 const Header = () => {
     return (
@@ -8,12 +10,11 @@ const Header = () => {
             <Wrapper>
                 <div className="Header-top">
                     <Logo />
-
                     <Person />
                 </div>
                 <div className="Header-bottom">
-                    <nav>nav</nav>
-                    <div>cart</div>
+                    <Nav />
+                    <Cart />
                 </div>
             </Wrapper>
         </header>

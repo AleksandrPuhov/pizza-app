@@ -2,6 +2,7 @@
 @import './styles/vars';
 @import './styles/common';
 @import './styles/fonts';
+@import './styles/mixins';
 
 @import './containers/Wrapper/Wrapper.scss';
 @import './containers/Header/Header.scss';
@@ -9,3 +10,6 @@
 
 @import './components/Logo/Logo.scss';
 @import './components/Person/Person.scss';
+@import './components/Notif/Notif.scss';
+@import './components/Nav/Nav.scss';
+@import './components/Cart/Cart.scss';

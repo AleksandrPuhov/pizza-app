@@ -5,12 +5,25 @@
     align-items: center;
 
     &-bell {
-        width: $heightBase;
-        height: $heightBase;
-        background-color: $iconBG;
-        padding: 13px;
-        border-radius: 50%;
+        position: relative;
+        @include refHoverUp;
+
+        &__icon {
+            position: relative;
+            width: $heightBase;
+            height: $heightBase;
+            background-color: $iconBG;
+            padding: 13px;
+            border-radius: 50%;
+        }
     }
+
+    &-user {
+        display: flex;
+        align-items: center;
+        @include refHoverUp;
+    }
+
     &-avatar {
         width: $heightBase;
         height: $heightBase;
@@ -28,9 +41,11 @@
         flex-direction: column;
         margin-left: 10px;
         &__name {
+            text-transform: capitalize;
             font-weight: 600;
         }
         &__status {
+            text-transform: capitalize;
             font-size: 14px;
             font-weight: 300;
             color: $textInfoColor;
@@ -39,6 +54,6 @@
     }
     &-arrowDown {
         width: 15px;
-        margin-left: 20px;
+        margin-left: 15px;
     }
 }

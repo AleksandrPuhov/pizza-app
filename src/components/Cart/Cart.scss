@@ -1,0 +1,22 @@
+.Cart {
+    display: flex;
+    align-items: center;
+    &__num {
+        background-color: $cartBgColor;
+        color: $textColorWhite;
+        border-radius: 50%;
+        height: 35px;
+        width: 35px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-text {
+        }
+    }
+    &__text {
+    }
+    &__price {
+    }
+}

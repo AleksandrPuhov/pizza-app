@@ -1,0 +1,19 @@
+.Nav {
+    &-list {
+        display: flex;
+
+        &__item:not(:first-child) {
+            margin-left: 30px;
+        }
+    }
+    &-ref {
+        color: $textColorBlack;
+        text-transform: capitalize;
+        display: block;
+        @include refHoverUp;
+
+        &:hover {
+            color: $navHover;
+        }
+    }
+}

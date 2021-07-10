@@ -1,0 +1,13 @@
+.Notif {
+    background-color: $NotifBgColor;
+    border-radius: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    color: $textColorWhite;
+    padding: 1px 6px;
+
+    position: absolute;
+    z-index: $NotifZindex;
+    top: 10%;
+    left: 50%;
+}
