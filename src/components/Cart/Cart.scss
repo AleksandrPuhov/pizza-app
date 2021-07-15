@@ -1,9 +1,14 @@
 .Cart {
     display: flex;
     align-items: center;
+    border: 2px solid $cartBgColor;
+    border-radius: 30px;
+    padding: 5px 10px;
+    @include refHoverUp;
+
     &__num {
         background-color: $cartBgColor;
-        color: $textColorWhite;
+        color: $colorWhite;
         border-radius: 50%;
         height: 35px;
         width: 35px;
@@ -13,10 +18,16 @@
         align-items: center;
 
         &-text {
+            font-size: 18px;
         }
     }
     &__text {
+        margin-left: 15px;
+        font-size: 18px;
     }
     &__price {
+        margin-left: 15px;
+        font-weight: 500;
+        font-size: 18px;
     }
 }
