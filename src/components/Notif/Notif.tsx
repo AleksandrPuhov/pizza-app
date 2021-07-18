@@ -1,5 +1,5 @@
 type NotifProps = {
-    num: string;
+    num: number;
 };
 
 const Notif = ({ num }: NotifProps) => {

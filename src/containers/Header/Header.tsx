@@ -28,7 +28,7 @@ const Header = () => {
         };
     });
 
-    const classNameCalc =
+    const classNameCalc: string =
         'Header-bottom__inner' + (menuFixed ? ' Header--fixed' : '');
 
     return (
@@ -45,8 +45,18 @@ const Header = () => {
                 <div className={classNameCalc}>
                     <Wrapper>
                         <div className="Header-navbar">
-                            <Nav />
-                            <Cart />
+                            <div className="Header-navbar__left">
+                                {menuFixed ? (
+                                    <Logo logoSmall={menuFixed} />
+                                ) : null}
+                                <Nav />
+                            </div>
+                            <div className="Header-navbar__right">
+                                <Cart cartSmall={menuFixed} />
+                                {menuFixed ? (
+                                    <Person personSmall={menuFixed} />
+                                ) : null}
+                            </div>
                         </div>
                     </Wrapper>
                 </div>

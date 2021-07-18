@@ -1,4 +1,8 @@
-const Cart = () => {
+type cartProps = {
+    cartSmall: boolean;
+};
+
+const Cart = ({ cartSmall }: cartProps) => {
     const ordersNum: number = 1;
     const fullPrice: number = 1320;
 
@@ -7,7 +11,9 @@ const Cart = () => {
             <div className="Cart__num">
                 <span className="Cart__num-text">{ordersNum}</span>
             </div>
-            <p className="Cart__text">My order</p>
+
+            {cartSmall ? null : <p className="Cart__text">My order</p>}
+
             <p className="Cart__price">{(fullPrice / 100).toFixed(2)} $</p>
         </div>
     );

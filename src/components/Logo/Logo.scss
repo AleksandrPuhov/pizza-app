@@ -1,13 +1,13 @@
 .Logo {
-    height: 100px;
+    height: 100%;
     display: flex;
     align-items: center;
 
     &__img {
         height: 100%;
+        margin-right: 15px;
     }
     &__text {
-        margin-left: 10px;
         font-size: 34px;
         font-weight: 500;
         color: $textColorBlack;
