@@ -2,7 +2,6 @@ import { ReactComponent as BellSvg } from '../../assets/icons/bell.svg';
 import { ReactComponent as DownArrow } from '../../assets/icons/down-arrow.svg';
 
 import UserAvatar from '../../assets/images/user-avatar.png';
-import ReactAux from '../../hoc/ReactAux/ReactAux';
 import Notif from '../Notif/Notif';
 
 type personType = {
@@ -49,17 +48,12 @@ const Person = ({ personSmall = false }: personProps) => {
     );
 
     const personAvatarCharacter: JSX.Element = (
-        <ReactAux>
-            <p
-                className="Person-avatar__character"
-                style={{ color: person.avatarTextColor }}
-            >
-                {person.name.charAt(0).toUpperCase()}
-            </p>
-            {person.notificationsNum > 0 ? (
-                <Notif num={person.notificationsNum} />
-            ) : null}
-        </ReactAux>
+        <p
+            className="Person-avatar__character"
+            style={{ color: person.avatarTextColor }}
+        >
+            {person.name.charAt(0).toUpperCase()}
+        </p>
     );
 
     return (
