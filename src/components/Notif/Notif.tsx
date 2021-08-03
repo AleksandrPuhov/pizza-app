@@ -3,6 +3,6 @@ type NotifProps = {
 };
 
 const Notif = ({ num }: NotifProps) => {
-    return <span className="Notif">{num}</span>;
+    return num > 0 ? <span className="Notif">{num}</span> : null;
 };
 export default Notif;
