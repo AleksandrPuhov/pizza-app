@@ -1,17 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../store/store';
 
-import { fullPriseSelector } from '../../store/reducers/orderList';
+import {
+    fullPriseSelector,
+    ordersNumSelector,
+} from '../../store/reducers/orderList';
 
 type cartProps = {
-    cartSmall: boolean;
+    cartSmall?: boolean;
 };
 
-const Cart = ({ cartSmall }: cartProps) => {
-    const ordersNum: number = 1;
+const Cart = ({ cartSmall = false }: cartProps) => {
+    const ordersNum = useAppSelector(ordersNumSelector);
 
-    const fullPrice: number = useSelector(fullPriseSelector);
-
-    // const fullPrice: number = 1320;
+    const fullPrice = useAppSelector(fullPriseSelector);
 
     return (
         <div className="Cart">
