@@ -1,35 +1,31 @@
 import { ReactComponent as BellSvg } from '../../assets/icons/bell.svg';
 import { ReactComponent as DownArrow } from '../../assets/icons/down-arrow.svg';
+import { useAppSelector } from '../../store/store';
+import {
+    personInfoName,
+    personInfoStatus,
+    personInfoNotifNum,
+    personInfoAvBGColor,
+    personInfoAvTextColor,
+} from '../../store/reducers/personReduser';
 
 import UserAvatar from '../../assets/images/user-avatar.png';
 import Notif from '../Notif/Notif';
-
-type personType = {
-    name: string;
-    status: string;
-    notificationsNum: number;
-    avatarBGColor: string;
-    avatarTextColor: string;
-};
 
 type personProps = {
     personSmall?: boolean;
 };
 
 const Person = ({ personSmall = false }: personProps) => {
-    const person: personType = {
-        name: 'Jeremy',
-        status: 'User',
-        notificationsNum: 3,
-        avatarBGColor: '#d7f5ff',
-        avatarTextColor: '#9370db',
-    };
+    const name = useAppSelector(personInfoName);
+    const status = useAppSelector(personInfoStatus);
+    const notificationsNum = useAppSelector(personInfoNotifNum);
+    const avatarBGColor = useAppSelector(personInfoAvBGColor);
+    const avatarTextColor = useAppSelector(personInfoAvTextColor);
 
     const personBell: JSX.Element = (
         <div className="Person-bell">
-            {person.notificationsNum > 0 ? (
-                <Notif num={person.notificationsNum} />
-            ) : null}
+            {notificationsNum > 0 ? <Notif num={notificationsNum} /> : null}
             <div className="Person-bell__icon">
                 <BellSvg />
             </div>
@@ -38,8 +34,8 @@ const Person = ({ personSmall = false }: personProps) => {
 
     const personInfo: JSX.Element = (
         <div className="Person-info">
-            <p className="Person-info__name">{person.name}</p>
-            <p className="Person-info__status">{person.status}</p>
+            <p className="Person-info__name">{name}</p>
+            <p className="Person-info__status">{status}</p>
         </div>
     );
 
@@ -50,9 +46,9 @@ const Person = ({ personSmall = false }: personProps) => {
     const personAvatarCharacter: JSX.Element = (
         <p
             className="Person-avatar__character"
-            style={{ color: person.avatarTextColor }}
+            style={{ color: avatarTextColor }}
         >
-            {person.name.charAt(0).toUpperCase()}
+            {name.charAt(0).toUpperCase()}
         </p>
     );
 
@@ -62,7 +58,7 @@ const Person = ({ personSmall = false }: personProps) => {
             <div className="Person-user">
                 <div
                     className="Person-avatar"
-                    style={{ backgroundColor: person.avatarBGColor }}
+                    style={{ backgroundColor: avatarBGColor }}
                 >
                     {personSmall ? personAvatarCharacter : personAvatarImg}
                 </div>

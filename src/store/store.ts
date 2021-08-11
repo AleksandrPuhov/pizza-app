@@ -2,10 +2,12 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 
 import orderListReduser from './reducers/orderList';
+import personReduser from './reducers/personReduser';
 
 export const store = configureStore({
     reducer: {
         orderList: orderListReduser,
+        personReduser: personReduser,
     },
 });
 
