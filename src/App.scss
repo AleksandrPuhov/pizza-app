@@ -1,17 +1,19 @@
-@import './styles/libs';
-@import './styles/vars';
-@import './styles/common';
-@import './styles/fonts';
-@import './styles/mixins';
+@import "./styles/libs";
+@import "./styles/vars";
+@import "./styles/common";
+@import "./styles/fonts";
+@import "./styles/mixins";
 
-@import './containers/Wrapper/Wrapper.scss';
-@import './containers/Header/Header.scss';
-@import './containers/Pizzas/Pizzas.scss';
+@import "./containers/Wrapper/Wrapper.scss";
+@import "./containers/Header/Header.scss";
+@import "./containers/Pizzas/Pizzas.scss";
 
-@import './components/Logo/Logo.scss';
-@import './components/Person/Person.scss';
-@import './components/Notif/Notif.scss';
-@import './components/Nav/Nav.scss';
-@import './components/Cart/Cart.scss';
-@import './components/PizzasList/PizzasList.scss';
-@import './components/PizzasItem/PizzasItem.scss';
+@import "./components/Logo/Logo.scss";
+@import "./components/Person/Person.scss";
+@import "./components/Notif/Notif.scss";
+@import "./components/Nav/Nav.scss";
+@import "./components/Cart/Cart.scss";
+@import "./components/PizzasList/PizzasList.scss";
+@import "./components/PizzasItem/PizzasItem.scss";
+@import "./components/ToggleSize/ToggleSize.scss";
+@import "./components/ToggleDough/ToggleDough.scss";

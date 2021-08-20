@@ -1,67 +1,67 @@
 .Person {
-    $heightBase: 55px;
+	$heightBase: 55px;
 
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
+	&-bell {
+		position: relative;
+		@include refHoverUp;
 
-    &-bell {
-        position: relative;
-        @include refHoverUp;
+		&__icon {
+			position: relative;
+			width: $heightBase;
+			height: $heightBase;
 
-        &__icon {
-            position: relative;
-            width: $heightBase;
-            height: $heightBase;
-            background-color: $iconBG;
-            padding: 13px;
-            border-radius: 50%;
-        }
-    }
+			background-color: $iconBG;
+			padding: 13px;
+			border-radius: 50%;
+		}
+	}
 
-    &-user {
-        display: flex;
-        align-items: center;
-        @include refHoverUp;
-    }
+	&-user {
+		display: flex;
+		align-items: center;
+		@include refHoverUp;
+	}
 
-    &-avatar {
-        width: $heightBase;
-        height: $heightBase;
-        padding: 10px;
-        border-radius: 50%;
-        margin-left: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
+	&-avatar {
+		width: $heightBase;
+		height: $heightBase;
+		padding: 10px;
+		border-radius: 50%;
+		margin-left: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
 
-        &__img {
-            height: 100%;
-        }
-        &__character {
-            display: block;
-            font-weight: 600;
-            font-size: 40px;
-        }
-    }
-    &-info {
-        display: flex;
-        flex-direction: column;
-        margin-left: 10px;
-        &__name {
-            text-transform: capitalize;
-            font-weight: 600;
-        }
-        &__status {
-            text-transform: capitalize;
-            font-size: 14px;
-            font-weight: 300;
-            color: $textInfoColor;
-            margin-top: 5px;
-        }
-    }
-    &-arrowDown {
-        width: 15px;
-        margin-left: 15px;
-    }
+		&__img {
+			height: 100%;
+		}
+		&__character {
+			display: block;
+			font-weight: 600;
+			font-size: 40px;
+		}
+	}
+	&-info {
+		display: flex;
+		flex-direction: column;
+		margin-left: 10px;
+		&__name {
+			text-transform: capitalize;
+			font-weight: 600;
+		}
+		&__status {
+			text-transform: capitalize;
+			font-size: 14px;
+			font-weight: 300;
+			color: $textInfoColor;
+			margin-top: 5px;
+		}
+	}
+	&-arrowDown {
+		width: 15px;
+		margin-left: 15px;
+	}
 }

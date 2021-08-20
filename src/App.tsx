@@ -1,19 +1,19 @@
-import Header from './containers/Header/Header';
-import Pizza from './containers/Pizzas/Pizzas';
-import Footer from './containers/Footer/Footer';
+import Header from "./containers/Header/Header";
+import Pizza from "./containers/Pizzas/Pizzas";
+import Footer from "./containers/Footer/Footer";
 
-import './App.scss';
+import "./App.scss";
 
 const App = () => {
-    return (
-        <>
-            <Header />
+	return (
+		<>
+			<Header />
 
-            <Pizza />
+			<Pizza />
 
-            <Footer />
-        </>
-    );
+			<Footer />
+		</>
+	);
 };
 
 export default App;

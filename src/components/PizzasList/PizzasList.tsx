@@ -1,14 +1,16 @@
-import PizzasItem from '../PizzasItem/PizzasItem';
+import { useAppSelector } from "../../store/store";
+
+import { fullPizzasList } from "../../store/reducers/pizzasListReduser";
+
+import PizzasItem from "../PizzasItem/PizzasItem";
 
 const PizzasList = () => {
-    return (
-        <ul className="PizzasList">
-            <PizzasItem />
-            <PizzasItem />
-            <PizzasItem />
-            <PizzasItem />
-            <PizzasItem />
-        </ul>
-    );
+	const pizzasList = useAppSelector(fullPizzasList);
+
+	const pizzasListEl = pizzasList.map((el) => (
+		<PizzasItem key={el.id} {...el} />
+	));
+
+	return <ul className="PizzasList">{pizzasListEl}</ul>;
 };
 export default PizzasList;

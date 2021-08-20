@@ -1,38 +1,52 @@
-import { ReactElement } from 'react';
-import { render as rtlRender, screen } from '@testing-library/react';
-import { configureStore } from '@reduxjs/toolkit';
-import { Provider } from 'react-redux';
+import { fireEvent } from "@testing-library/react";
 
-import personReduser from '../../store/reducers/personReduser';
-import orderListReduser from '../../store/reducers/orderList';
+import renderWithRedux from "../../util/RenderWithRedux";
 
+import Header from "./Header";
 
-import Header from './Header';
+describe("Header", () => {
+	test("render Header with initial state", () => {
+		const { container } = renderWithRedux(<Header />);
+		expect(
+			container.querySelector(".Header-top__inner .Logo")
+		).toBeInTheDocument();
+		expect(
+			container.querySelector(".Header-top__inner .Person")
+		).toBeInTheDocument();
+		expect(
+			container.querySelector(".Header-bottom__inner")
+		).not.toHaveClass("Header--fixed");
+		expect(
+			container.querySelector(".Header-navbar__left .Logo")
+		).toBeNull();
+		expect(
+			container.querySelector(".Header-navbar__right .Person")
+		).toBeNull();
+	});
 
-const renderWithRedux = (
-    ui: ReactElement,
-    {
-        preloadedState,
-        store = configureStore({
-            reducer: { orderList: orderListReduser,personReduser: personReduser },
-            preloadedState,
-        }),
-        ...renderOptions
-    }: any = {}
-) => {
-    const Wrapper: React.FC = ({ children }) => {
-        return <Provider store={store}>{children}</Provider>;
-    };
-    return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
-};
+	test("render Header with scroll", () => {
+		const { container } = renderWithRedux(<Header />);
 
+		const elTop = container
+			.querySelector(".Header-bottom__inner")!
+			.getBoundingClientRect().top;
 
-describe('Header', () => {
+		fireEvent.scroll(window, { target: { pageYOffset: elTop - 1 } });
 
-    test('render Logo text', () => {
-        renderWithRedux(<Header />);
-        expect(screen.getByText(/Pizza Hot/i)).toBeInTheDocument();
-    });
+		expect(
+			container.querySelector(".Header-bottom__inner")
+		).not.toHaveClass("Header--fixed");
+
+		fireEvent.scroll(window, { target: { pageYOffset: elTop + 1 } });
+
+		expect(container.querySelector(".Header-bottom__inner")).toHaveClass(
+			"Header--fixed"
+		);
+		expect(
+			container.querySelector(".Header-navbar__left .Logo")
+		).toBeInTheDocument();
+		expect(
+			container.querySelector(".Header-navbar__right .Person")
+		).toBeInTheDocument();
+	});
 });
-
-

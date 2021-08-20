@@ -1,11 +1,11 @@
-import Wrapper from '../Wrapper/Wrapper';
+import Wrapper from "../Wrapper/Wrapper";
 
 const Footer = () => {
-    return (
-        <footer>
-            <Wrapper>footer</Wrapper>
-        </footer>
-    );
+	return (
+		<footer className="Footer">
+			<Wrapper>footer</Wrapper>
+		</footer>
+	);
 };
 
 export default Footer;

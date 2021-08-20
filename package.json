@@ -50,7 +50,8 @@
         "collectCoverageFrom": [
             "src/**/*.{js,jsx,ts,tsx}",
             "!src/index.tsx",
-            "!src/store/constants.ts"
+            "!src/store/constants.ts",
+            "!src/store/store.ts"
         ]
     }
 }
