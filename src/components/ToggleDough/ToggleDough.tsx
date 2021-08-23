@@ -1,23 +1,28 @@
 import { useState } from "react";
 import { doughType } from "../../store/constants";
 
-const ToggleDough = () => {
+type ToggleDoughType = {
+	changeDoughClick: (id: number) => void;
+};
+
+const ToggleDough = ({ changeDoughClick }: ToggleDoughType) => {
 	const [selectedDough, setSelectedDough] = useState(0);
 
-	const changeDoughHandler = (ind: number) => {
-		setSelectedDough(ind);
+	const changeDoughHandler = (id: number) => {
+		setSelectedDough(id);
+		changeDoughClick(id);
 	};
 
-	const doughTypeList = doughType.map((el, ind) => {
+	const doughTypeList = doughType.map((el, index) => {
 		return (
-			<label key={ind} className="ToggleDough-item">
+			<label key={index} className="ToggleDough-item">
 				{el}
 				<input
 					className="ToggleDough-item__input"
 					type="radio"
-					value={ind}
-					checked={selectedDough === ind}
-					onChange={() => changeDoughHandler(ind)}
+					value={index}
+					checked={selectedDough === index}
+					onChange={() => changeDoughHandler(index)}
 				/>
 			</label>
 		);

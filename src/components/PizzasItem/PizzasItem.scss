@@ -1,14 +1,37 @@
 .PizzasItem {
-    &__img {
-        width: 100%;
-    }
-    &__name {
-        font-size: 20px;
-        font-weight: 500;
-    }
-    &__info {
-        margin: 8px 0 20px;
-        color: $textInfoColor;
-        font-weight: 300;
-    }
+	display: flex;
+	flex-direction: column;
+	&__img {
+		width: 100%;
+	}
+	&__name {
+		font-size: 20px;
+		font-weight: 500;
+	}
+	&__info {
+		margin: 8px 0 15px;
+		color: $textInfoColor;
+		font-weight: 300;
+		flex-grow: 1;
+	}
+	&__price {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-top: 20px;
+		align-items: center;
+
+		&-text {
+			font-size: 22px;
+		}
+		&-btn {
+			border: 2px solid $BtnColor;
+			padding: 7px 15px;
+			border-radius: 20px;
+			background-color: $colorWhite;
+			color: $BtnColor;
+			font-weight: 300;
+			@include refHoverUp;
+		}
+	}
 }

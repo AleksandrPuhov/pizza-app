@@ -12,8 +12,16 @@ const PizzasItem = ({
 }: pizzaListItemType) => {
 	const [priceSelected, setPriceSelected] = useState(price[1]);
 
+	const [doughSelected, setDoughSelected] = useState(1);
+	const [sizeSelected, setSizeSelected] = useState(0);
+
 	const changeSize = (id: number) => {
 		setPriceSelected(price[id]);
+		setSizeSelected(id);
+	};
+
+	const changeDough = (id: number) => {
+		setDoughSelected(id);
 	};
 
 	return (
@@ -26,9 +34,14 @@ const PizzasItem = ({
 			<h3 className="PizzasItem__name">{name}</h3>
 			<p className="PizzasItem__info">{textInfo}</p>
 			<ToggleSize changeSizeClick={changeSize} />
-			<ToggleDough />
-			<p>{(priceSelected / 100).toFixed(2) + " $"}</p>
-			<p>add to cart (2)</p>
+			<ToggleDough changeDoughClick={changeDough} />
+
+			<div className="PizzasItem__price">
+				<p className="PizzasItem__price-text">
+					{(priceSelected / 100).toFixed(2) + " $"}
+				</p>
+				<button className="PizzasItem__price-btn">Add to cart</button>
+			</div>
 		</li>
 	);
 };
