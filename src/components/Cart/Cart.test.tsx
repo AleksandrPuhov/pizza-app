@@ -20,10 +20,16 @@ describe("Cart", () => {
 	test("check store state work", () => {
 		renderWithRedux(<Cart />, {
 			preloadedState: {
-				orderListReduser: { orders: [1, 2, 3], fullPrise: 1000 },
+				orderListReduser: {
+					orders: [
+						{ id: 1, doughSelected: 0, sizeSelected: 1, num: 3 },
+						{ id: 2, doughSelected: 0, sizeSelected: 1, num: 2 },
+					],
+					fullPrise: 1000,
+				},
 			},
 		});
-		expect(screen.getByText("3")).toBeInTheDocument();
+		expect(screen.getByText("5")).toBeInTheDocument();
 		expect(screen.getByText(/10.00/i)).toBeInTheDocument();
 	});
 });

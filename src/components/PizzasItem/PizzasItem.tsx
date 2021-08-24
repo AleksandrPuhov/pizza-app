@@ -1,5 +1,10 @@
 import { useState } from "react";
+
+import { useAppDispatch } from "../../store/store";
+
 import { pizzaListItemType } from "../../store/reducers/pizzasListReduser";
+import { addNewOrder } from "../../store/actions/orderListActions";
+
 import ToggleDough from "../ToggleDough/ToggleDough";
 import ToggleSize from "../ToggleSize/ToggleSize";
 
@@ -12,8 +17,8 @@ const PizzasItem = ({
 }: pizzaListItemType) => {
 	const [priceSelected, setPriceSelected] = useState(price[1]);
 
-	const [doughSelected, setDoughSelected] = useState(1);
-	const [sizeSelected, setSizeSelected] = useState(0);
+	const [doughSelected, setDoughSelected] = useState(0);
+	const [sizeSelected, setSizeSelected] = useState(1);
 
 	const changeSize = (id: number) => {
 		setPriceSelected(price[id]);
@@ -22,6 +27,18 @@ const PizzasItem = ({
 
 	const changeDough = (id: number) => {
 		setDoughSelected(id);
+	};
+
+	const dispatch = useAppDispatch();
+
+	const addBtnHandler = () => {
+		dispatch(
+			addNewOrder({
+				id: id,
+				doughSelected: doughSelected,
+				sizeSelected: sizeSelected,
+			})
+		);
 	};
 
 	return (
@@ -40,7 +57,12 @@ const PizzasItem = ({
 				<p className="PizzasItem__price-text">
 					{(priceSelected / 100).toFixed(2) + " $"}
 				</p>
-				<button className="PizzasItem__price-btn">Add to cart</button>
+				<button
+					className="PizzasItem__price-btn"
+					onClick={addBtnHandler}
+				>
+					Add to cart
+				</button>
 			</div>
 		</li>
 	);

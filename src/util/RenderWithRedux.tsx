@@ -25,7 +25,7 @@ const renderWithRedux = (
 	const Wrapper: React.FC<{}> = ({ children }) => {
 		return <Provider store={store}>{children}</Provider>;
 	};
-	return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
+	return { ...rtlRender(ui, { wrapper: Wrapper, ...renderOptions }), store };
 };
 
 export default renderWithRedux;
