@@ -1,16 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
+export interface sortingType {
+	hot: boolean;
+	bbq: boolean;
+	mushrooms: boolean;
+	meat: boolean;
+}
+
 export interface pizzaListItemType {
 	id: number;
 	imgName: string;
 	name: string;
 	textInfo: string;
 	price: Array<number>;
+	sortItem: sortingType;
 }
 
 export interface pizzasListInterface {
 	pizzasList: Array<pizzaListItemType>;
+	sortingSelected: sortingType;
 }
 
 const initialState: pizzasListInterface = {
@@ -21,6 +30,12 @@ const initialState: pizzasListInterface = {
 			name: "Pepperoni",
 			textInfo: "Marinara sauce, extra mozzarella, double pepperoni",
 			price: [1399, 1599, 1799],
+			sortItem: {
+				hot: false,
+				bbq: false,
+				mushrooms: false,
+				meat: false,
+			},
 		},
 		{
 			id: 2,
@@ -28,6 +43,12 @@ const initialState: pizzasListInterface = {
 			name: "The Mighty Meats",
 			textInfo: "Bacon, mozzarella, pepperoni, chicken, marinara sauce",
 			price: [1399, 1599, 1799],
+			sortItem: {
+				hot: false,
+				bbq: false,
+				mushrooms: false,
+				meat: true,
+			},
 		},
 		{
 			id: 3,
@@ -35,6 +56,12 @@ const initialState: pizzasListInterface = {
 			name: "Chicken BBQ",
 			textInfo: "Extra chicken, mozzarella, bacon, red onions, bbq sauce",
 			price: [1399, 1599, 1799],
+			sortItem: {
+				hot: false,
+				bbq: true,
+				mushrooms: false,
+				meat: true,
+			},
 		},
 		{
 			id: 4,
@@ -43,6 +70,12 @@ const initialState: pizzasListInterface = {
 			textInfo:
 				"Jalapeno peppers, mozzarella, marinara sauce, pepperoni, red onions",
 			price: [1499, 1699, 1899],
+			sortItem: {
+				hot: true,
+				bbq: false,
+				mushrooms: false,
+				meat: false,
+			},
 		},
 		{
 			id: 5,
@@ -50,6 +83,12 @@ const initialState: pizzasListInterface = {
 			name: "Hawaiian",
 			textInfo: "Ham, extra mozzarella, marinara sauce, pineapple",
 			price: [1399, 1599, 1799],
+			sortItem: {
+				hot: false,
+				bbq: false,
+				mushrooms: false,
+				meat: false,
+			},
 		},
 		{
 			id: 6,
@@ -58,6 +97,12 @@ const initialState: pizzasListInterface = {
 			textInfo:
 				"Spicy beef, green peppers, pepperoni, marinara sauce, sauce bbq, mozzarella cheese, chilli peppers",
 			price: [1499, 1699, 1899],
+			sortItem: {
+				hot: true,
+				bbq: true,
+				mushrooms: false,
+				meat: false,
+			},
 		},
 		{
 			id: 7,
@@ -66,6 +111,12 @@ const initialState: pizzasListInterface = {
 			textInfo:
 				"Bacon, red onions, mozzarella, extra chicken, creamy sauce",
 			price: [1399, 1599, 1799],
+			sortItem: {
+				hot: false,
+				bbq: false,
+				mushrooms: false,
+				meat: true,
+			},
 		},
 		{
 			id: 8,
@@ -74,6 +125,12 @@ const initialState: pizzasListInterface = {
 			textInfo:
 				"Jalapeno pepper, cherry tomatoes, mozzarella cheese, marinara sauce, pepper bell, onion red, corn grain, spicy beef",
 			price: [1499, 1699, 1899],
+			sortItem: {
+				hot: true,
+				bbq: false,
+				mushrooms: false,
+				meat: false,
+			},
 		},
 		{
 			id: 9,
@@ -81,6 +138,12 @@ const initialState: pizzasListInterface = {
 			name: "Farmhouse",
 			textInfo: "Marinara sauce, mushrooms, extra mozzarella, ham",
 			price: [1399, 1599, 1799],
+			sortItem: {
+				hot: false,
+				bbq: false,
+				mushrooms: true,
+				meat: false,
+			},
 		},
 		{
 			id: 10,
@@ -89,6 +152,12 @@ const initialState: pizzasListInterface = {
 			textInfo:
 				"Marinara sauce, extra chicken, mozzarella, mushrooms, red onions, cherry tomatoes, green peppers, jalapeno peppers",
 			price: [1399, 1599, 1799],
+			sortItem: {
+				hot: true,
+				bbq: false,
+				mushrooms: true,
+				meat: true,
+			},
 		},
 		{
 			id: 11,
@@ -96,6 +165,12 @@ const initialState: pizzasListInterface = {
 			name: "Double Pepperoni",
 			textInfo: "Double pepperoni, marinara sauce, extra mozzarella",
 			price: [1499, 1699, 1899],
+			sortItem: {
+				hot: false,
+				bbq: false,
+				mushrooms: false,
+				meat: false,
+			},
 		},
 		{
 			id: 12,
@@ -104,17 +179,33 @@ const initialState: pizzasListInterface = {
 			textInfo:
 				"Sweet corn, red onions, tuna, mozzarella, marinara sauce",
 			price: [1399, 1599, 1799],
+			sortItem: {
+				hot: false,
+				bbq: false,
+				mushrooms: false,
+				meat: false,
+			},
 		},
 	],
+	sortingSelected: { hot: false, bbq: false, mushrooms: false, meat: false },
 };
 
 export const pizzasListReduser = createSlice({
 	name: "pizzasListReduser",
 	initialState,
-	reducers: {},
+	reducers: {
+		changeSortingSelected: (state, action) => {
+			state.sortingSelected = action.payload;
+		},
+	},
 });
+
+export const { changeSortingSelected } = pizzasListReduser.actions;
 
 export const fullPizzasList = (state: RootState) =>
 	state.pizzasListReduser.pizzasList;
+
+export const pizzasSortingSelected = (state: RootState) =>
+	state.pizzasListReduser.sortingSelected;
 
 export default pizzasListReduser.reducer;

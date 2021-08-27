@@ -1,12 +1,12 @@
-import { screen } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 
 import renderWithRedux from "../../util/RenderWithRedux";
 
-import PizzasList from "./PizzasList";
+import Pizza from "./Pizza";
 
-describe("PizzasList", () => {
-	test("render PizzasList with inital state", () => {
-		renderWithRedux(<PizzasList />, {
+describe("Pizzas", () => {
+	test("render Pizzas with inital state", () => {
+		renderWithRedux(<Pizza />, {
 			preloadedState: {
 				pizzasListReduser: {
 					pizzasList: [
@@ -34,17 +34,17 @@ describe("PizzasList", () => {
 			},
 		});
 
-		expect(screen.getAllByAltText("Pizza")[0]).toHaveAttribute(
+		expect(screen.getByAltText("Pizza")).toHaveAttribute(
 			"src",
 			"/pizzas-img/111.jpg"
 		);
-
 		expect(screen.getByText(/Test Name 1/i)).toBeInTheDocument();
 		expect(screen.getByText(/Testing text info 1/i)).toBeInTheDocument();
 		expect(screen.getByText(/20.00/i)).toBeInTheDocument();
 	});
-	test("PizzasList with sorting", () => {
-		renderWithRedux(<PizzasList />, {
+
+	test("Pizzas test sorting changes", () => {
+		renderWithRedux(<Pizza />, {
 			preloadedState: {
 				pizzasListReduser: {
 					pizzasList: [
@@ -52,7 +52,7 @@ describe("PizzasList", () => {
 							id: 1,
 							imgName: "111.jpg",
 							name: "Name1",
-							textInfo: "Testing text",
+							textInfo: "Testing text info",
 							price: [1000, 2000, 3000],
 							sortItem: {
 								hot: false,
@@ -63,64 +63,45 @@ describe("PizzasList", () => {
 						},
 						{
 							id: 2,
-							imgName: "222.jpg",
-							name: "Name2",
-							textInfo: "Testing text",
-							price: [1000, 2000, 3000],
-							sortItem: {
-								hot: false,
-								bbq: true,
-								mushrooms: false,
-								meat: true,
-							},
-						},
-					],
-					sortingSelected: {
-						hot: false,
-						bbq: true,
-						mushrooms: false,
-						meat: true,
-					},
-				},
-			},
-		});
-
-		expect(screen.queryByText(/Name1/i)).not.toBeInTheDocument();
-		expect(screen.getByText(/Name2/i)).toBeInTheDocument();
-	});
-
-	test("PizzasList is empty", () => {
-		renderWithRedux(<PizzasList />, {
-			preloadedState: {
-				pizzasListReduser: {
-					pizzasList: [
-						{
-							id: 1,
 							imgName: "111.jpg",
-							name: "Name1",
-							textInfo: "Testing text",
+							name: "Name2",
+							textInfo: "Testing text info",
 							price: [1000, 2000, 3000],
 							sortItem: {
-								hot: false,
+								hot: true,
 								bbq: false,
-								mushrooms: false,
+								mushrooms: true,
 								meat: false,
 							},
 						},
 					],
 					sortingSelected: {
 						hot: false,
-						bbq: true,
+						bbq: false,
 						mushrooms: false,
-						meat: true,
+						meat: false,
 					},
 				},
 			},
 		});
 
+		const spanAll = screen.getByText(/All/i);
+		const spanMeat = screen.getByText(/Meat/i);
+		const spanMushrooms = screen.getByText(/Mushrooms/i);
+
+		expect(spanAll).toHaveClass("PizzasSorting-btn--select");
+		expect(screen.getByText(/Name1/i)).toBeInTheDocument();
+		expect(screen.getByText(/Name2/i)).toBeInTheDocument();
+
+		fireEvent.click(spanMeat);
+		expect(spanMeat).toHaveClass("PizzasSorting-btn--select");
 		expect(screen.queryByText(/Name1/i)).not.toBeInTheDocument();
-		expect(
-			screen.queryByText(/No Pizzas found with this filters/i)
-		).toBeInTheDocument();
+		expect(screen.queryByText(/Name2/i)).not.toBeInTheDocument();
+
+		fireEvent.click(spanMeat);
+		fireEvent.click(spanMushrooms);
+		expect(spanMushrooms).toHaveClass("PizzasSorting-btn--select");
+		expect(screen.queryByText(/Name1/i)).not.toBeInTheDocument();
+		expect(screen.queryByText(/Name2/i)).toBeInTheDocument();
 	});
 });

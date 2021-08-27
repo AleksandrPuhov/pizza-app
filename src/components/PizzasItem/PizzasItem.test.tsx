@@ -12,6 +12,12 @@ describe("PizzasItem", () => {
 			name: "Test Name",
 			textInfo: "Testing text info",
 			price: [1111, 2222, 3333],
+			sortItem: {
+				hot: false,
+				bbq: false,
+				mushrooms: false,
+				meat: false,
+			},
 		};
 
 		renderWithRedux(<PizzasItem {...newItem} />);
@@ -32,6 +38,12 @@ describe("PizzasItem", () => {
 			name: "Test Name",
 			textInfo: "Testing text info",
 			price: [1111, 2222, 3333],
+			sortItem: {
+				hot: false,
+				bbq: false,
+				mushrooms: false,
+				meat: false,
+			},
 		};
 
 		renderWithRedux(<PizzasItem {...newItem} />);
@@ -59,6 +71,12 @@ describe("PizzasItem", () => {
 			name: "Test Name",
 			textInfo: "Testing text info",
 			price: [1111, 2222, 3333],
+			sortItem: {
+				hot: false,
+				bbq: false,
+				mushrooms: false,
+				meat: false,
+			},
 		};
 
 		const { store } = renderWithRedux(<PizzasItem {...newItem} />, {
@@ -74,7 +92,6 @@ describe("PizzasItem", () => {
 		});
 
 		const labelCheck10 = screen.getByText(/10/i);
-		const labelCheck12 = screen.getByText(/12/i);
 		const labelCheck14 = screen.getByText(/14/i);
 		const originalCheck = screen.getByText(/Original/i);
 		const thinCheck = screen.getByText(/Thin/i);

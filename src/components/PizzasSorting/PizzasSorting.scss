@@ -1,0 +1,17 @@
+.PizzasSorting {
+	display: flex;
+	margin-bottom: 20px;
+	&-item {
+		margin-right: 10px;
+	}
+
+	&-btn {
+		cursor: pointer;
+		display: block;
+		@include refHoverUp;
+
+		&--select {
+			color: $BtnColor;
+		}
+	}
+}

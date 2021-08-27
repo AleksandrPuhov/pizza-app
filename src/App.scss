@@ -6,7 +6,8 @@
 
 @import "./containers/Wrapper/Wrapper.scss";
 @import "./containers/Header/Header.scss";
-@import "./containers/Pizzas/Pizzas.scss";
+@import "./containers/Pizza/Pizza.scss";
+@import "./containers/Footer/Footer.scss";
 
 @import "./components/Logo/Logo.scss";
 @import "./components/Person/Person.scss";
@@ -17,3 +18,4 @@
 @import "./components/PizzasItem/PizzasItem.scss";
 @import "./components/ToggleSize/ToggleSize.scss";
 @import "./components/ToggleDough/ToggleDough.scss";
+@import "./components/PizzasSorting/PizzasSorting.scss";

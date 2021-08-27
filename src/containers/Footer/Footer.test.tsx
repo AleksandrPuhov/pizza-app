@@ -4,6 +4,6 @@ import Footer from "./Footer";
 describe("Footer", () => {
 	test("render Footer text", () => {
 		render(<Footer />);
-		expect(screen.getByText(/footer/i)).toBeInTheDocument();
+		expect(screen.getByText("Pizza Hot")).toBeInTheDocument();
 	});
 });
