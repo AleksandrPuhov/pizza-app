@@ -1,12 +1,13 @@
 import { fireEvent } from "@testing-library/react";
 
-import renderWithRedux from "../../util/RenderWithRedux";
+import renderWithRouterAndRedux from "../../util/renderWithReduxAndRouter";
 
 import Header from "./Header";
 
 describe("Header", () => {
 	test("render Header with initial state", () => {
-		const { container } = renderWithRedux(<Header />);
+		const { container } = renderWithRouterAndRedux(<Header />);
+
 		expect(
 			container.querySelector(".Header-top__inner .Logo")
 		).toBeInTheDocument();
@@ -25,7 +26,7 @@ describe("Header", () => {
 	});
 
 	test("render Header with scroll", () => {
-		const { container } = renderWithRedux(<Header />);
+		const { container } = renderWithRouterAndRedux(<Header />);
 
 		const elTop = container
 			.querySelector(".Header-bottom__inner")!

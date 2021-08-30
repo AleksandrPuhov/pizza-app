@@ -1,15 +1,9 @@
-import { render } from "@testing-library/react";
-import { store } from "./store/store";
-import { Provider } from "react-redux";
 import App from "./App";
+import renderWithRouterAndRedux from "./util/renderWithReduxAndRouter";
 
 describe("App", () => {
 	test("renders App component", () => {
-		const { container } = render(
-			<Provider store={store}>
-				<App />
-			</Provider>
-		);
+		const { container } = renderWithRouterAndRedux(<App />);
 
 		expect(container.querySelector(".Header")).toBeInTheDocument();
 		expect(container.querySelector(".Pizzas")).toBeInTheDocument();

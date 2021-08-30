@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 
-import renderWithRedux from "../../util/RenderWithRedux";
+import renderWithRedux from "../../util/renderWithRedux";
 
 import Person from "./Person";
 
