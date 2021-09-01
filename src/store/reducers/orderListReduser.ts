@@ -9,12 +9,12 @@ export interface orderItemType {
 
 export interface orderListInterface {
 	orders: Array<orderItemType>;
-	fullPrise: number;
+	fullPrice: number;
 }
 
 const initialState: orderListInterface = {
 	orders: [],
-	fullPrise: 0,
+	fullPrice: 0,
 };
 
 export const orderListReduser = createSlice({
@@ -33,7 +33,7 @@ export const orderListReduser = createSlice({
 			state.orders[action.payload].num++;
 		},
 		recalcFullprice: (state, action) => {
-			state.fullPrise = state.fullPrise + action.payload;
+			state.fullPrice = state.fullPrice + action.payload;
 		},
 	},
 });
@@ -41,8 +41,10 @@ export const orderListReduser = createSlice({
 export const { addNewOrderItem, addOrderItemNum, recalcFullprice } =
 	orderListReduser.actions;
 
-export const fullPriseSelector = (state: RootState) =>
-	state.orderListReduser.fullPrise;
+export const orderListSelector = (state: RootState) => state.orderListReduser;
+
+export const fullPriceSelector = (state: RootState) =>
+	state.orderListReduser.fullPrice;
 
 export const ordersNumSelector = (state: RootState) =>
 	state.orderListReduser.orders.reduce((acc, curr) => acc + curr.num, 0);

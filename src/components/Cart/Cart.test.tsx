@@ -25,7 +25,7 @@ describe("Cart", () => {
 						{ id: 1, doughSelected: 0, sizeSelected: 1, num: 3 },
 						{ id: 2, doughSelected: 0, sizeSelected: 1, num: 2 },
 					],
-					fullPrise: 1000,
+					fullPrice: 1000,
 				},
 			},
 		});

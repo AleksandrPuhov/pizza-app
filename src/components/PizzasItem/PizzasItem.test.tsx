@@ -83,7 +83,7 @@ describe("PizzasItem", () => {
 			preloadedState: {
 				orderListReduser: {
 					orders: [],
-					fullPrise: 0,
+					fullPrice: 0,
 				},
 				pizzasListReduser: {
 					pizzasList: [newItem],
@@ -102,7 +102,7 @@ describe("PizzasItem", () => {
 		fireEvent.click(thinCheck);
 		fireEvent.click(addBtn);
 
-		expect(store.getState().orderListReduser.fullPrise).toEqual(1111);
+		expect(store.getState().orderListReduser.fullPrice).toEqual(1111);
 		expect(store.getState().orderListReduser.orders[0].id).toEqual(1);
 		expect(
 			store.getState().orderListReduser.orders[0].doughSelected
@@ -116,7 +116,7 @@ describe("PizzasItem", () => {
 		fireEvent.click(originalCheck);
 		fireEvent.click(addBtn);
 
-		expect(store.getState().orderListReduser.fullPrise).toEqual(4444);
+		expect(store.getState().orderListReduser.fullPrice).toEqual(4444);
 		expect(store.getState().orderListReduser.orders[1].id).toEqual(1);
 		expect(
 			store.getState().orderListReduser.orders[1].doughSelected

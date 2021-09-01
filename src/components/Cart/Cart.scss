@@ -1,33 +1,73 @@
 .Cart {
-    display: flex;
-    align-items: center;
-    border: 2px solid $cartBgColor;
-    border-radius: 30px;
-    padding: 5px 10px;
-    @include refHoverUp;
+	display: flex;
+	align-items: center;
+	border: 2px solid $cartBgColor;
+	border-radius: 30px;
+	padding: 5px 10px;
+	@include refHoverUp;
+	position: relative;
+	z-index: 1;
 
-    &__num {
-        background-color: $cartBgColor;
-        color: $colorWhite;
-        border-radius: 50%;
-        height: 35px;
-        width: 35px;
+	&__num {
+		background-color: $cartBgColor;
+		color: $colorWhite;
+		border-radius: 50%;
+		height: 35px;
+		width: 35px;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
-        &-text {
-            font-size: 18px;
-        }
-    }
-    &__text {
-        margin-left: 15px;
-        font-size: 18px;
-    }
-    &__price {
-        margin-left: 15px;
-        font-weight: 500;
-        font-size: 18px;
-    }
+		&-text {
+			font-size: 18px;
+		}
+	}
+	&__text {
+		margin-left: 15px;
+		font-size: 18px;
+	}
+	&__price {
+		margin-left: 15px;
+		font-weight: 500;
+		font-size: 18px;
+	}
+	&__modal {
+		position: absolute;
+		height: 0;
+		right: 0;
+		top: 100%;
+		z-index: 2;
+		transition: 0.2s;
+
+		&-wrapper {
+			display: none;
+			background-color: $colorWhite;
+			filter: $modalDropShadow;
+			position: relative;
+			z-index: 2;
+			border-radius: 10px;
+
+			&::before {
+				content: "";
+				position: absolute;
+				z-index: 1;
+				width: 12px;
+				height: 12px;
+				background-color: $colorWhite;
+
+				right: 25px;
+				top: -6px;
+				transform: rotate(45deg);
+			}
+		}
+	}
+
+	&:hover &__modal {
+		cursor: auto;
+		padding-top: 13px;
+		&-wrapper {
+			display: block;
+		}
+	}
 }

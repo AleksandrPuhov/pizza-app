@@ -55,7 +55,7 @@ const PizzasItem = ({
 
 			<div className="PizzasItem__price">
 				<p className="PizzasItem__price-text">
-					{(priceSelected / 100).toFixed(2) + " $"}
+					{"$ " + (priceSelected / 100).toFixed(2)}
 				</p>
 				<button
 					className="PizzasItem__price-btn"

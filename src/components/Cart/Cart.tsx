@@ -1,9 +1,11 @@
 import { useAppSelector } from "../../store/store";
 
 import {
-	fullPriseSelector,
+	fullPriceSelector,
 	ordersNumSelector,
 } from "../../store/reducers/orderListReduser";
+
+import CartModal from "../CartModal/CartModal";
 
 type cartProps = {
 	cartSmall?: boolean;
@@ -12,7 +14,7 @@ type cartProps = {
 const Cart = ({ cartSmall = false }: cartProps) => {
 	const ordersNum = useAppSelector(ordersNumSelector);
 
-	const fullPrice = useAppSelector(fullPriseSelector);
+	const fullPrice = useAppSelector(fullPriceSelector);
 
 	return (
 		<div className="Cart">
@@ -22,7 +24,13 @@ const Cart = ({ cartSmall = false }: cartProps) => {
 
 			{cartSmall ? null : <p className="Cart__text">My order</p>}
 
-			<p className="Cart__price">{(fullPrice / 100).toFixed(2)} $</p>
+			<p className="Cart__price">{"$ " + (fullPrice / 100).toFixed(2)}</p>
+
+			<div className="Cart__modal">
+				<div className="Cart__modal-wrapper">
+					<CartModal />
+				</div>
+			</div>
 		</div>
 	);
 };
