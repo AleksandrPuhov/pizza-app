@@ -10,6 +10,7 @@ import Footer from "./containers/Footer/Footer";
 import Area from "./containers/Area/Area";
 import Contact from "./containers/Contact/Contact";
 import About from "./containers/About/About";
+import Profile from "./containers/Profile/Profile";
 
 const App = () => {
 	return (
@@ -29,6 +30,10 @@ const App = () => {
 				<Route path={navRefs[3].link}>
 					<About />
 				</Route>
+				<Route path={"/profile"}>
+					<Profile />
+				</Route>
+
 				<Redirect to="/" />
 			</Switch>
 

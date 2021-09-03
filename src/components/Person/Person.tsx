@@ -1,5 +1,3 @@
-import { ReactComponent as BellSvg } from "../../assets/icons/bell.svg";
-import { ReactComponent as DownArrow } from "../../assets/icons/down-arrow.svg";
 import { useAppSelector } from "../../store/store";
 import {
 	personInfoName,
@@ -9,8 +7,13 @@ import {
 	personInfoAvTextColor,
 } from "../../store/reducers/personReduser";
 
+import { ReactComponent as BellSvg } from "../../assets/icons/bell.svg";
+import { ReactComponent as DownArrow } from "../../assets/icons/down-arrow.svg";
+
 import UserAvatar from "../../assets/images/user-avatar.png";
 import Notif from "../Notif/Notif";
+import PersonMenu from "../PersonMenu/PersonMenu";
+import { useState } from "react";
 
 type personProps = {
 	personSmall?: boolean;
@@ -22,6 +25,8 @@ const Person = ({ personSmall = false }: personProps) => {
 	const notificationsNum = useAppSelector(personInfoNotifNum);
 	const avatarBGColor = useAppSelector(personInfoAvBGColor);
 	const avatarTextColor = useAppSelector(personInfoAvTextColor);
+
+	const [showModal, setShowModal] = useState(false);
 
 	const personBell: JSX.Element = (
 		<div className="Person-bell">
@@ -52,22 +57,49 @@ const Person = ({ personSmall = false }: personProps) => {
 		</p>
 	);
 
+	const personCickHandler = () => {
+		setShowModal(!showModal);
+	};
+
 	return (
-		<div className="Person">
-			{personSmall ? null : personBell}
-			<div className="Person-user">
-				<div
-					className="Person-avatar"
-					style={{ backgroundColor: avatarBGColor }}
-				>
-					{personSmall ? personAvatarCharacter : personAvatarImg}
-				</div>
-				{personSmall ? null : personInfo}
-				<div className="Person-arrowDown">
-					<DownArrow />
+		<>
+			<div className="Person" onClick={personCickHandler}>
+				{personSmall ? null : personBell}
+				<div className="Person-user">
+					<div
+						className="Person-avatar"
+						style={{ backgroundColor: avatarBGColor }}
+					>
+						{personSmall ? personAvatarCharacter : personAvatarImg}
+					</div>
+					{personSmall ? null : personInfo}
+					<div
+						className="Person-arrowDown"
+						style={{
+							transform: showModal
+								? "rotateX(180deg)"
+								: "rotateX(0deg)",
+						}}
+					>
+						<DownArrow />
+					</div>
 				</div>
 			</div>
-		</div>
+			<div
+				className="Person-menu__bg"
+				style={{ display: showModal ? "block" : "none" }}
+				onClick={personCickHandler}
+			/>
+			<div
+				className="Person-menu"
+				style={{
+					display: showModal ? "block" : "none",
+					top: personSmall ? "117%" : "85%",
+				}}
+			>
+				<PersonMenu closeClickHandler={personCickHandler} />
+			</div>
+		</>
 	);
 };
 export default Person;

@@ -1,8 +1,9 @@
 .Person {
 	$heightBase: 55px;
-
 	display: flex;
 	align-items: center;
+	position: relative;
+
 	&-bell {
 		position: relative;
 		@include refHoverUp;
@@ -22,6 +23,8 @@
 		display: flex;
 		align-items: center;
 		@include refHoverUp;
+		position: relative;
+		z-index: 3;
 	}
 
 	&-avatar {
@@ -63,5 +66,25 @@
 	&-arrowDown {
 		width: 15px;
 		margin-left: 15px;
+		transition: $transitionTime;
+	}
+	&-menu {
+		position: absolute;
+		background-color: $colorWhite;
+		right: 0;
+		z-index: 3;
+		padding: 10px;
+		border-radius: 10px;
+		box-shadow: $menuPersonShadow;
+
+		&__bg {
+			position: fixed;
+			z-index: 2;
+			right: 0;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			cursor: pointer;
+		}
 	}
 }

@@ -51,14 +51,3 @@ const CartModal = () => {
 };
 
 export default CartModal;
-function id(
-	id: any
-): (state: {
-	orderListReduser: import("../../store/reducers/orderListReduser").orderListInterface;
-	personReduser: import("../../store/reducers/personReduser").personInterface;
-	pizzasListReduser: import("../../store/reducers/pizzasListReduser").pizzasListInterface;
-}) =>
-	| import("../../store/reducers/pizzasListReduser").pizzaListItemType
-	| undefined {
-	throw new Error("Function not implemented.");
-}

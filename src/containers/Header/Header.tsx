@@ -31,7 +31,7 @@ const Header = () => {
 				<Wrapper>
 					<div className="Header-top__inner">
 						<Logo />
-						<Person />
+						{menuFixed ? null : <Person />}
 					</div>
 				</Wrapper>
 			</div>

@@ -1,12 +1,12 @@
 import { screen } from "@testing-library/react";
 
-import renderWithRedux from "../../util/renderWithRedux";
+import renderWithRouterAndRedux from "../../util/renderWithReduxAndRouter";
 
 import Person from "./Person";
 
 describe("Person", () => {
 	test("checks initial state", () => {
-		const { container } = renderWithRedux(<Person />);
+		const { container } = renderWithRouterAndRedux(<Person />);
 
 		expect(container.querySelector(".Person-bell")).toBeInTheDocument();
 		expect(
@@ -17,7 +17,9 @@ describe("Person", () => {
 	});
 
 	test("render Person small", () => {
-		const { container } = renderWithRedux(<Person personSmall={true} />);
+		const { container } = renderWithRouterAndRedux(
+			<Person personSmall={true} />
+		);
 		expect(container.querySelector(".Person-bell")).toBeNull();
 		expect(container.querySelector(".Person-avatar__img")).toBeNull();
 		expect(
@@ -27,7 +29,7 @@ describe("Person", () => {
 	});
 
 	test("Person normal check store state work", () => {
-		const { container } = renderWithRedux(<Person />, {
+		const { container } = renderWithRouterAndRedux(<Person />, {
 			preloadedState: {
 				personReduser: {
 					name: "RandomName",
@@ -39,16 +41,16 @@ describe("Person", () => {
 			},
 		});
 
-		expect(screen.getByText(/RandomName/)).toBeInTheDocument();
-		expect(screen.getByText(/User123/)).toBeInTheDocument();
-		expect(screen.getByText(/7/)).toBeInTheDocument();
+		expect(screen.getAllByText(/RandomName/)[0]).toBeInTheDocument();
+		expect(screen.getAllByText(/User123/)[0]).toBeInTheDocument();
+		expect(screen.getAllByText(/7/)[0]).toBeInTheDocument();
 		expect(container.querySelector(".Person-avatar")).toHaveStyle(
 			`background-color: #dddfff`
 		);
 	});
 
 	test("Person normal check notification = 0", () => {
-		const { container } = renderWithRedux(<Person />, {
+		const { container } = renderWithRouterAndRedux(<Person />, {
 			preloadedState: {
 				personReduser: {
 					name: "RandomName",
@@ -60,8 +62,8 @@ describe("Person", () => {
 			},
 		});
 
-		expect(screen.getByText(/RandomName/)).toBeInTheDocument();
-		expect(screen.getByText(/User123/)).toBeInTheDocument();
+		expect(screen.getAllByText(/RandomName/)[0]).toBeInTheDocument();
+		expect(screen.getAllByText(/User123/)[0]).toBeInTheDocument();
 		expect(container.querySelector(".Notif")).toBeNull();
 		expect(container.querySelector(".Person-avatar")).toHaveStyle(
 			`background-color: #dddfff`
@@ -69,21 +71,21 @@ describe("Person", () => {
 	});
 
 	test("Person small check store state work", () => {
-		const { container } = renderWithRedux(<Person personSmall={true} />, {
-			preloadedState: {
-				personReduser: {
-					name: "RandomName",
-					status: "User123",
-					notificationsNum: 7,
-					avatarBGColor: "#dddfff",
-					avatarTextColor: "#999000",
+		const { container } = renderWithRouterAndRedux(
+			<Person personSmall={true} />,
+			{
+				preloadedState: {
+					personReduser: {
+						name: "RandomName",
+						status: "User123",
+						notificationsNum: 7,
+						avatarBGColor: "#dddfff",
+						avatarTextColor: "#999000",
+					},
 				},
-			},
-		});
-		expect(screen.queryByText(/RandomName/)).toBeNull();
-		expect(screen.getByText(/R/)).toBeInTheDocument();
-		expect(screen.queryByText(/User123/)).toBeNull();
-		expect(screen.queryByText(/7/)).toBeNull();
+			}
+		);
+		expect(screen.getByText("R")).toBeInTheDocument();
 		expect(
 			container.querySelector(".Person-avatar__character")
 		).toHaveStyle(`color: #999000`);
