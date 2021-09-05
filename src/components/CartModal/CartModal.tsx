@@ -2,6 +2,7 @@ import { useAppSelector } from "../../store/store";
 
 import { orderListSelector } from "../../store/reducers/orderListReduser";
 import { fullPizzasList } from "../../store/reducers/pizzasListReduser";
+import { sizeType, doughType } from "../../store/constants";
 
 const CartModal = () => {
 	const orderList = useAppSelector(orderListSelector);
@@ -12,7 +13,7 @@ const CartModal = () => {
 			(pizzasEl) => pizzasEl.id === orderEl.id
 		);
 
-		if (index < 1) {
+		if (index < 0) {
 			return null;
 		} else {
 			const { imgName, name, price } = pizzasList[index];
@@ -26,15 +27,30 @@ const CartModal = () => {
 
 					<div className="CartModal-item__info">
 						<p className="CartModal-item__info-name">{name}</p>
-						<p className="CartModal-item__info-options">options</p>
-						<p className="CartModal-item__info-calc">
-							{orderEl.num +
-								" x $ " +
-								(price[orderEl.sizeSelected] / 100).toFixed(2)}
+						<p className="CartModal-item__info-options">
+							{sizeType[orderEl.sizeSelected] +
+								", " +
+								doughType[orderEl.doughSelected]}
 						</p>
-						<p className="CartModal-item__info-price">price</p>
+
+						<div className="CartModal-item__info-price">
+							<p className="CartModal-item__info-calc">
+								{orderEl.num +
+									" x $ " +
+									(price[orderEl.sizeSelected] / 100).toFixed(
+										2
+									)}
+							</p>
+							<p className="CartModal-item__info-price">
+								{(
+									(price[orderEl.sizeSelected] *
+										orderEl.num) /
+									100
+								).toFixed(2)}
+							</p>
+						</div>
 					</div>
-					<button className="CartModal-item__btn"></button>
+					<button className="CartModal-item__del"></button>
 				</li>
 			);
 		}
@@ -43,22 +59,13 @@ const CartModal = () => {
 	return (
 		<div className="CartModal">
 			<ul className="CartModal-list">{ordersListEl}</ul>
+
 			<p className="CartModal-total">
 				{"Total: $ " + (orderList.fullPrice / 100).toFixed(2)}
 			</p>
+			<button className="CartModal-cart">To cart</button>
 		</div>
 	);
 };
 
 export default CartModal;
-function id(
-	id: any
-): (state: {
-	orderListReduser: import("../../store/reducers/orderListReduser").orderListInterface;
-	personReduser: import("../../store/reducers/personReduser").personInterface;
-	pizzasListReduser: import("../../store/reducers/pizzasListReduser").pizzasListInterface;
-}) =>
-	| import("../../store/reducers/pizzasListReduser").pizzaListItemType
-	| undefined {
-	throw new Error("Function not implemented.");
-}

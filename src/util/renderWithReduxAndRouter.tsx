@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
 
 import { render as rtlRender } from "@testing-library/react";
 import { configureStore } from "@reduxjs/toolkit";
@@ -25,16 +26,20 @@ const renderWithRouterAndRedux = (
 		...renderOptions
 	}: any = {}
 ) => {
-	window.history.pushState({}, "Test page", route);
+	const testHistory = createMemoryHistory({ initialEntries: [route] });
 
 	const Wrapper: React.FC<{}> = ({ children }) => {
 		return (
 			<Provider store={store}>
-				<BrowserRouter>{children}</BrowserRouter>
+				<Router history={testHistory}>{children}</Router>
 			</Provider>
 		);
 	};
-	return { ...rtlRender(ui, { wrapper: Wrapper, ...renderOptions }), store };
+	return {
+		...rtlRender(ui, { wrapper: Wrapper, ...renderOptions }),
+		store,
+		history: testHistory,
+	};
 };
 
 export default renderWithRouterAndRedux;

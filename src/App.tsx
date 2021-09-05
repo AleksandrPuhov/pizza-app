@@ -10,6 +10,7 @@ import Footer from "./containers/Footer/Footer";
 import Area from "./containers/Area/Area";
 import Contact from "./containers/Contact/Contact";
 import About from "./containers/About/About";
+import Cart from "./containers/Cart/Cart";
 
 const App = () => {
 	return (
@@ -28,6 +29,9 @@ const App = () => {
 				</Route>
 				<Route path={navRefs[3].link}>
 					<About />
+				</Route>
+				<Route path={"/cart"}>
+					<Cart />
 				</Route>
 				<Redirect to="/" />
 			</Switch>

@@ -2,8 +2,6 @@
 	padding: 15px;
 	border-radius: 5px;
 	width: 300px;
-	&-list {
-	}
 	&-item {
 		margin-bottom: 5px;
 		padding-bottom: 5px;
@@ -13,17 +11,33 @@
 		width: 100%;
 
 		&__img {
-			width: 30px;
-			height: 30px;
+			width: 45px;
+			height: 45px;
+			margin-right: 10px;
+			align-self: center;
 		}
 		&__info {
 			flex-grow: 1;
 			p {
 				display: block;
 			}
+			&-name {
+				margin-bottom: 3px;
+			}
+
+			&-price {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			&-options,
+			&-calc {
+				color: $textInfoColor;
+				font-size: 14px;
+			}
 		}
 
-		&__btn {
+		&__del {
 			width: 20px;
 			height: 20px;
 			background-color: transparent;

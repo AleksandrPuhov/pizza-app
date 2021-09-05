@@ -4,7 +4,7 @@ import Wrapper from "../Wrapper/Wrapper";
 import Logo from "../../components/Logo/Logo";
 import Person from "../../components/Person/Person";
 import Nav from "../../components/Nav/Nav";
-import Cart from "../../components/Cart/Cart";
+import CartHeader from "../../components/CartHeader/CartHeader";
 
 const Header = () => {
 	const [menuFixed, setMenuFixed] = useState(false);
@@ -46,7 +46,7 @@ const Header = () => {
 								<Nav />
 							</div>
 							<div className="Header-navbar__right">
-								<Cart cartSmall={menuFixed} />
+								<CartHeader cartSmall={menuFixed} />
 								{menuFixed ? (
 									<Person personSmall={menuFixed} />
 								) : null}
