@@ -1,13 +1,22 @@
 .Notif {
-    background-color: $NotifBgColor;
-    border-radius: 100%;
-    font-size: 14px;
-    font-weight: 600;
-    color: $colorWhite;
-    padding: 1px 6px;
+	background-color: $NotifBgColor;
+	border-radius: 100%;
+	font-size: 14px;
+	font-weight: 600;
+	color: $colorWhite;
+	padding: 1px 6px;
 
-    position: absolute;
-    z-index: $NotifZindex;
-    top: 10%;
-    left: 50%;
+	position: absolute;
+	z-index: 2;
+
+	&--topLeft {
+		top: 10%;
+		left: 50%;
+	}
+
+	&--center {
+		top: auto;
+		left: auto;
+		margin-left: 10px;
+	}
 }

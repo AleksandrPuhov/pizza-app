@@ -1,8 +1,13 @@
 type NotifProps = {
-    num: number;
+	num: number;
+	centerPos?: boolean;
 };
 
-const Notif = ({ num }: NotifProps) => {
-    return num > 0 ? <span className="Notif">{num}</span> : null;
+const Notif = ({ num, centerPos = false }: NotifProps) => {
+	const myClassName = centerPos
+		? "Notif Notif--center"
+		: "Notif Notif--topLeft";
+
+	return num > 0 ? <span className={myClassName}>{num}</span> : null;
 };
 export default Notif;
