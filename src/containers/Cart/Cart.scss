@@ -1,4 +1,32 @@
 .Cart {
 	padding: 10px 0 60px;
 	min-height: calc(100vh - 189px);
+
+	&-title {
+		text-align: center;
+		font-size: 30px;
+		margin: 30px 0;
+		font-weight: 400;
+	}
+	&-price {
+		text-align: center;
+		font-size: 22px;
+		margin: 15px 0 25px;
+		font-weight: 400;
+		&__cost {
+			font-weight: 500;
+		}
+	}
+	&-btn {
+		display: block;
+		margin: 0 auto;
+		font-size: 20px;
+		border: 2px solid $BtnColor;
+		padding: 7px 30px;
+		border-radius: 30px;
+		background-color: $colorWhite;
+		color: $BtnColor;
+		font-weight: 300;
+		@include refHoverUp;
+	}
 }

@@ -125,5 +125,17 @@ describe("PizzasItem", () => {
 			store.getState().orderListReduser.orders[1].sizeSelected
 		).toEqual(2);
 		expect(store.getState().orderListReduser.orders[1].num).toEqual(1);
+
+		fireEvent.click(addBtn);
+
+		expect(store.getState().orderListReduser.fullPrice).toEqual(7777);
+		expect(store.getState().orderListReduser.orders[1].id).toEqual(1);
+		expect(
+			store.getState().orderListReduser.orders[1].doughSelected
+		).toEqual(0);
+		expect(
+			store.getState().orderListReduser.orders[1].sizeSelected
+		).toEqual(2);
+		expect(store.getState().orderListReduser.orders[1].num).toEqual(2);
 	});
 });

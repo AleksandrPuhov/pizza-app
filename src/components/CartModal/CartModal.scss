@@ -2,71 +2,22 @@
 	padding: 15px;
 	border-radius: 5px;
 	width: 300px;
-	&-item {
-		margin-bottom: 5px;
-		padding-bottom: 5px;
-		border-bottom: 1px solid $modalLineColor;
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-
-		&__img {
-			width: 45px;
-			height: 45px;
-			margin-right: 10px;
-			align-self: center;
-		}
-		&__info {
-			flex-grow: 1;
-			p {
-				display: block;
-			}
-			&-name {
-				margin-bottom: 3px;
-			}
-
-			&-price {
-				display: flex;
-				justify-content: space-between;
-			}
-
-			&-options,
-			&-calc {
-				color: $textInfoColor;
-				font-size: 14px;
-			}
-		}
-
-		&__del {
-			width: 20px;
-			height: 20px;
-			background-color: transparent;
-			z-index: 0;
-			border: none;
-			cursor: pointer;
-			position: relative;
-
-			&::before,
-			&::after {
-				content: "";
-				position: absolute;
-				width: 100%;
-				height: 2px;
-				z-index: 1;
-				background-color: $modalLineColor;
-				border-radius: 2px;
-				left: 0;
-			}
-
-			&::before {
-				transform: rotate(45deg);
-			}
-			&::after {
-				transform: rotate(-45deg);
-			}
-		}
-	}
 
 	&-total {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 10px;
+		&__btn {
+			border: 2px solid $BtnColor;
+
+			padding: 4px 25px;
+
+			border-radius: 20px;
+			background-color: $colorWhite;
+			color: $BtnColor;
+			font-weight: 300;
+			@include refHoverUp;
+		}
 	}
 }

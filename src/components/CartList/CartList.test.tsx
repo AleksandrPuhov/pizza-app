@@ -2,9 +2,9 @@ import { fireEvent, screen } from "@testing-library/react";
 
 import renderWithRouterAndRedux from "../../util/renderWithReduxAndRouter";
 
-import CartModal from "./CartModal";
+import CartList from "./CartList";
 
-describe("CartModal", () => {
+describe("CartList", () => {
 	const preloadedState = {
 		pizzasListReduser: {
 			pizzasList: [
@@ -62,7 +62,7 @@ describe("CartModal", () => {
 	};
 
 	test("checks initial state", () => {
-		renderWithRouterAndRedux(<CartModal />, {
+		renderWithRouterAndRedux(<CartList />, {
 			preloadedState: preloadedState,
 		});
 
@@ -75,23 +75,61 @@ describe("CartModal", () => {
 		expect(screen.getByText(/12", Original/i)).toBeInTheDocument();
 		expect(screen.getByText("2 x $ 22.00")).toBeInTheDocument();
 		expect(screen.getByText("$ 44.00")).toBeInTheDocument();
-
-		expect(screen.getByText(/64.00/i)).toBeInTheDocument();
 	});
 
-	test("click To cart button", () => {
-		const { container, history } = renderWithRouterAndRedux(<CartModal />, {
+	test("checks delete order item", () => {
+		const { container } = renderWithRouterAndRedux(<CartList />, {
 			preloadedState: preloadedState,
-			route: "/some-route",
 		});
 
-		expect(history.location.pathname).toEqual("/some-route");
+		expect(screen.getByText(/Name1/i)).toBeInTheDocument();
+		expect(screen.getByText(/Name2/i)).toBeInTheDocument();
 
-		const btn = container.querySelector(".CartModal-total__btn");
-		if (btn !== null) {
-			fireEvent.click(btn);
-		}
+		fireEvent.click(container.querySelectorAll(".CartList-item__del")[0]);
 
-		expect(history.location.pathname).toEqual("/cart");
+		expect(screen.queryByText(/Name1/i)).not.toBeInTheDocument();
+		expect(screen.getByText(/Name2/i)).toBeInTheDocument();
+	});
+
+	test("Empty order list", () => {
+		const { container } = renderWithRouterAndRedux(<CartList />, {
+			preloadedState: {
+				pizzasListReduser: {
+					pizzasList: [
+						{
+							id: 1,
+							imgName: "111.jpg",
+							name: "Name1",
+							textInfo: "Testing text info",
+							price: [1000, 2000, 3000],
+							sortItem: {
+								hot: false,
+								bbq: false,
+								mushrooms: false,
+								meat: false,
+							},
+						},
+					],
+					sortingSelected: {
+						hot: false,
+						bbq: false,
+						mushrooms: false,
+						meat: false,
+					},
+				},
+				orderListReduser: {
+					orders: [
+						{
+							id: 2,
+							doughSelected: 1,
+							sizeSelected: 1,
+							num: 1,
+						},
+					],
+					fullPrice: 0,
+				},
+			},
+		});
+		expect(container.querySelector(".CartList-item")).toBeNull();
 	});
 });

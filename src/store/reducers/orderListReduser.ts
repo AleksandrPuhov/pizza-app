@@ -32,14 +32,28 @@ export const orderListReduser = createSlice({
 		addOrderItemNum: (state, action) => {
 			state.orders[action.payload].num++;
 		},
-		recalcFullprice: (state, action) => {
-			state.fullPrice = state.fullPrice + action.payload;
+		changeFullprice: (state, action) => {
+			state.fullPrice = action.payload;
+		},
+		deleteOrderItem: (state, action) => {
+			state.orders = state.orders.filter(
+				(el) =>
+					!(
+						el.id === action.payload.id &&
+						el.doughSelected === action.payload.doughSelected &&
+						el.sizeSelected === action.payload.sizeSelected
+					)
+			);
 		},
 	},
 });
 
-export const { addNewOrderItem, addOrderItemNum, recalcFullprice } =
-	orderListReduser.actions;
+export const {
+	addNewOrderItem,
+	addOrderItemNum,
+	deleteOrderItem,
+	changeFullprice,
+} = orderListReduser.actions;
 
 export const orderListSelector = (state: RootState) => state.orderListReduser;
 
