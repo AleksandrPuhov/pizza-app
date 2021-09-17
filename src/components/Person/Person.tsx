@@ -14,6 +14,7 @@ import UserAvatar from "../../assets/images/user-avatar.png";
 import Notif from "../Notif/Notif";
 import PersonMenu from "../PersonMenu/PersonMenu";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 type personProps = {
 	personSmall?: boolean;
@@ -28,8 +29,14 @@ const Person = ({ personSmall = false }: personProps) => {
 
 	const [showModal, setShowModal] = useState(false);
 
+	const history = useHistory();
+
+	const personNotifBtnHandler = () => {
+		history.push("/profile");
+	};
+
 	const personBell: JSX.Element = (
-		<div className="Person-bell">
+		<div className="Person-bell" onClick={personNotifBtnHandler}>
 			{notificationsNum > 0 ? <Notif num={notificationsNum} /> : null}
 			<div className="Person-bell__icon">
 				<BellSvg />
@@ -63,9 +70,10 @@ const Person = ({ personSmall = false }: personProps) => {
 
 	return (
 		<>
-			<div className="Person" onClick={personCickHandler}>
+			<div className="Person">
 				{personSmall ? null : personBell}
-				<div className="Person-user">
+
+				<div className="Person-user" onClick={personCickHandler}>
 					<div
 						className="Person-avatar"
 						style={{ backgroundColor: avatarBGColor }}

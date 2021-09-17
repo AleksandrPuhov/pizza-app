@@ -104,7 +104,7 @@ describe("Person", () => {
 			},
 		});
 
-		const personEl = container.firstChild;
+		const personEl = container.querySelector(".Person-user");
 		const personMenuBg = container.querySelector(".Person-menu__bg");
 		const personMenu = container.querySelector(".Person-menu");
 
@@ -123,5 +123,29 @@ describe("Person", () => {
 
 		expect(personMenuBg).toHaveStyle("display: none");
 		expect(personMenu).toHaveStyle("display: none");
+	});
+
+	test("Click on notifications bell", () => {
+		const { container, history } = renderWithRouterAndRedux(<Person />, {
+			preloadedState: {
+				personReduser: {
+					name: "RandomName",
+					status: "User123",
+					notificationsNum: 7,
+					avatarBGColor: "#dddfff",
+					avatarTextColor: "#999000",
+				},
+			},
+			route: "/some-route",
+		});
+
+		const personBell = container.querySelector(".Person-bell");
+
+		expect(history.location.pathname).toEqual("/some-route");
+
+		if (personBell !== null) {
+			fireEvent.click(personBell);
+		}
+		expect(history.location.pathname).toEqual("/profile");
 	});
 });
