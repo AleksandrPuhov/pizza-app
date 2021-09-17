@@ -1,6 +1,7 @@
 # Pizza app
 
 This project is a pizza app.
+
 Here use React, TypeScript, React-Router, Redux, React Testing Library.
 
 ## Installation
