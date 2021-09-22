@@ -2,6 +2,8 @@
 
 This project is a pizza app.
 
+https://my-pizza-app-a89bc.firebaseapp.com/
+
 Here use React, TypeScript, React-Router, Redux, React Testing Library.
 
 ## Installation
