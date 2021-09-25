@@ -4,7 +4,7 @@ const About = () => {
 	return (
 		<section className="About">
 			<Wrapper>
-				<p>About Us1</p>
+				<p>About Us</p>
 			</Wrapper>
 		</section>
 	);
