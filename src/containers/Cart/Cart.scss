@@ -29,4 +29,8 @@
 		font-weight: 300;
 		@include refHoverUp;
 	}
+
+	@media screen and (max-width: $tabletSize) {
+		min-height: calc(100vh - 89px);
+	}
 }

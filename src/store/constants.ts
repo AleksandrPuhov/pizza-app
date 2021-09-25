@@ -6,3 +6,5 @@ export const navRefs: Array<{ text: string; link: string }> = [
 	{ text: "Contact Us", link: "/contact" },
 	{ text: "About Us", link: "/about" },
 ];
+export const tabletSize = 760;
+export const phoneWideSize = 490;

@@ -18,9 +18,10 @@ import { useHistory } from "react-router-dom";
 
 type personProps = {
 	personSmall?: boolean;
+	windowsSmall?: boolean;
 };
 
-const Person = ({ personSmall = false }: personProps) => {
+const Person = ({ personSmall = false, windowsSmall = false }: personProps) => {
 	const name = useAppSelector(personInfoName);
 	const status = useAppSelector(personInfoStatus);
 	const notificationsNum = useAppSelector(personInfoNotifNum);
@@ -105,7 +106,10 @@ const Person = ({ personSmall = false }: personProps) => {
 					top: personSmall ? "117%" : "85%",
 				}}
 			>
-				<PersonMenu closeClickHandler={personCickHandler} />
+				<PersonMenu
+					closeClickHandler={personCickHandler}
+					windowsSmall={windowsSmall}
+				/>
 			</div>
 		</>
 	);

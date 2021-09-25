@@ -10,12 +10,17 @@ import {
 
 import UserAvatar from "../../assets/images/user-avatar.png";
 import Notif from "../Notif/Notif";
+import Nav from "../Nav/Nav";
 
 type PersonMenuType = {
 	closeClickHandler: () => void;
+	windowsSmall?: boolean;
 };
 
-const PersonMenu = ({ closeClickHandler }: PersonMenuType) => {
+const PersonMenu = ({
+	closeClickHandler,
+	windowsSmall = false,
+}: PersonMenuType) => {
 	const name = useAppSelector(personInfoName);
 	const avatarBGColor = useAppSelector(personInfoAvBGColor);
 	const status = useAppSelector(personInfoStatus);
@@ -35,6 +40,12 @@ const PersonMenu = ({ closeClickHandler }: PersonMenuType) => {
 					<p className="PersonMenu__user-status">{status}</p>
 				</div>
 			</div>
+			{windowsSmall ? (
+				<Nav
+					windowsSmall={windowsSmall}
+					closeClickHandler={closeClickHandler}
+				/>
+			) : null}
 			<ul className="PersonMenu__list">
 				<li className="PersonMenu__list-item">
 					<Link

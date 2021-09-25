@@ -1,4 +1,8 @@
 .Area {
 	padding: 10px 0 60px;
 	min-height: calc(100vh - 189px);
+
+	@media screen and (max-width: $tabletSize) {
+		min-height: calc(100vh - 89px);
+	}
 }

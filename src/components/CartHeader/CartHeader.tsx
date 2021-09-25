@@ -7,6 +7,7 @@ import {
 
 import CartModal from "../CartModal/CartModal";
 import { useHistory } from "react-router-dom";
+import { phoneWideSize } from "../../store/constants";
 
 type cartProps = {
 	cartSmall?: boolean;
@@ -19,9 +20,14 @@ const CartHeader = ({ cartSmall = false }: cartProps) => {
 
 	const history = useHistory();
 
+	const modalClassName =
+		window.innerWidth < phoneWideSize
+			? "CartHeader__modal CartHeader__modal--moveRight"
+			: "CartHeader__modal";
+
 	const modalEl =
 		ordersNum === 0 ? null : (
-			<div className="CartHeader__modal">
+			<div className={modalClassName}>
 				<div className="CartHeader__modal-wrapper">
 					<CartModal />
 				</div>
